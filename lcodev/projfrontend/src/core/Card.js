@@ -1,8 +1,10 @@
 import React from "react";
 import ImageHelper from "./helper/imageHelper";
 import { Redirect } from "react-router-dom";
+import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
+
 //TODO: deal later
-const isAuthenticated = false;
+const isAuthenticated = true;
 
 const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
   const cartTitle = product ? product.name : "A photo";
@@ -10,6 +12,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
   const cartPrice = product ? product.price : "A Price";
 
   const addToCart = () => {
+    addItemToCart(product, () => {});
     if (isAuthenticated) {
       console.log("Added to cart");
     } else {
@@ -42,6 +45,7 @@ const Card = ({ product, addtoCart = true, removeFromCart = false }) => {
         <button
           onClick={() => {
             //TODO: handle later
+            removeItemFromCart(product._id);
             console.log("product removed from cart..");
           }}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
