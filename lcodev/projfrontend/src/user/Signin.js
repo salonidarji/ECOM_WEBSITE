@@ -35,8 +35,8 @@ const Signin = () => {
         console.log(("DATA: ", data));
 
         if (data.token) {
-          let sessionToken = data.token;
-          authenticate(sessionToken, () => {
+          // let sessionToken = data.token;
+          authenticate(data, () => {
             console.log("token added");
             setValues({
               ...values,
@@ -138,6 +138,8 @@ const Signin = () => {
   return (
     <Base title="Signin page" description="ecom website">
       {loadingMessage()}
+      {successMessage()}
+      {errorMessage()}
       {signInForm()}
       <p className="text-white text-center">Welcome to Signin</p>
       {JSON.stringify(values)}
