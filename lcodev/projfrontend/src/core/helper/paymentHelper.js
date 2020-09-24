@@ -22,6 +22,7 @@ export const processPayment = (userId, token, paymentInfo) => {
     body: formData,
   })
     .then((response) => {
+      console.log("MY DATA:", response);
       return response.json();
     })
     .catch((e) => console.log(e));

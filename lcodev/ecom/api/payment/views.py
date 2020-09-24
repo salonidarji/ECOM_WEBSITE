@@ -45,13 +45,14 @@ def process_payment(request, id, token):
 
     result = gateway.transaction.sale({
         "amount": amount_from_client,
-        "payment_method_nonce": nonce_from_the_client,
+        "payment_method_nonce": nounce_from_client,
         "options": {
             "submit_for_settlement": True
         }
     })
 
     if result.is_success:
+        print("success payment transaction")
         return JsonResponse({'Success': result.is_success, 'transaction': {'id': result.transaction.id, 'amount': result.transaction.amount}})
     else:
         return JsonResponse({'error': True, 'Success': False})

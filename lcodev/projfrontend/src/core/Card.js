@@ -21,8 +21,8 @@ const Card = ({
   const cartPrice = product ? product.price : "A Price";
 
   const addToCart = () => {
-    addItemToCart(product, () => setRedirect(true));
     if (isAuthenticated()) {
+      addItemToCart(product, () => setRedirect(true));
       console.log("Added to cart");
     } else {
       console.log("login please first..");
